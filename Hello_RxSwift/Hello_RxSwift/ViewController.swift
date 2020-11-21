@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
-
+    let name = Observable.just("arshad")
     override func viewDidLoad() {
         super.viewDidLoad()
+        name.subscribe(onNext: { (event) in
+            print(event)
+            }).disposed(by: DisposeBag())
     }
 }
 

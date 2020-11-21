@@ -60,7 +60,7 @@ class ViewController: UIViewController {
       
         let pubSub =  PublishSubject<String>()
         
-        pubSub.on(.next("new value"))
+        pubSub.on(.next("new value")) // will not print this value
         
         pubSub.subscribe(onNext: {
                print($0) // publishSubject :- print latest value added after subscription

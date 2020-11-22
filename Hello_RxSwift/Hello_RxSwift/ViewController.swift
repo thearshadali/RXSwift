@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         example1()
         example2()
         example3()
+        example4()
     }
     
     func example1(){
@@ -67,6 +68,22 @@ class ViewController: UIViewController {
             }).disposed(by: disposebag)
         
         pubSub.onNext("new value 2") // print new value 2 since its added after subscription
+    }
+    
+    func example4(){
+        print("----- example 4 -------")
+        
+        let pub = PublishSubject<String>()
+        //interested in element at 2nd index or 3rd element. ignore all other elements
+        
+        pub.elementAt(2).subscribe(onNext: { val in
+            print(val)
+            }).disposed(by: disposebag)
+        
+        pub.onNext("1")
+        pub.onNext("2")
+        pub.onNext("3")
+        
     }
     
 }
